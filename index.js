@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require("cors");
 const morgan = require("morgan");
+const errorHandler = require('./middleware/errorHandler');
 const passport = require('passport')
 const connectDB = require('./config/db')
 const swaggerUi = require('swagger-ui-express');
@@ -39,7 +40,7 @@ app.get('/', async (req, res) => {
 })
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/auth', require('./routes/authRoute'))
-
+app.use(errorHandler);
 connectDB()
 
 const PORT = process.env.PORT || 5000
