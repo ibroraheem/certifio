@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 const User = require('../models/User');
 const { generateOTP, sendOTPEmail, sendVerificationEmail } = require('../utils/otp');
 
-// Async Handler Utility
+
 const asyncHandler = require('../utils/asyncHandler');
 
 const registerUser = asyncHandler(async (req, res, next) => {
